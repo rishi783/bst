@@ -21,13 +21,13 @@ node *insert(node *root,int key)
 {
 if(root==NULL)
 return newnode(key);
-else if(key<root->x)
+else if(key<root->x)                 // if the element is lesser than the root it goes to the left subtree
 root->left=insert(root->left,key);
-else if(key>root->x)
-root->right=insert(root->right,key);
+else if(key>root->x)                 // if the element is greater than the root it goes to the right subtree
+root->right=insert(root->right,key); 
 return root;
 }
-node *FindMin(node *temp)
+node *FindMin(node *temp)  // if we want to replace a node from its right subtree we should find the minimum element of the right subtree so in changing those values the bst rules wont change
 {
 while(t->left)
 t=t->left;
@@ -43,27 +43,27 @@ else if(key>root->x)
 root->right=delete(root->right,key);
 else
 {
-if(root->left==NULL && root->right==NULL)
+if(root->left==NULL && root->right==NULL) // if no child
 {
 free(root);
 root=NULL;
 return root;
 }
-else if(root->left==NULL)
+else if(root->left==NULL) // if only right child , change the values and delete
 { 
 node *temp=root;
 root=root->right;
 free(temp);
 return root;
 }
-else if(root->right==NULL)
+else if(root->right==NULL)  // if only left child , change the values and delete
 {
 node *temp=root;
 root=root->left;
 free(temp);
 return root;
 }
-else
+else // if it has two children , here I have taken the right side and exchanged the value with the least element from its right subtree.
 {
 node *temp=FindMin(root->right);
 root->x=temp->x;
