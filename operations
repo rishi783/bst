@@ -27,7 +27,7 @@ else if(key>root->x)                 // if the element is greater than the root 
 root->right=insert(root->right,key); 
 return root;
 }
-node *FindMin(node *temp)  // if we want to replace a node from its right subtree we should find the minimum element of the right subtree so in changing those values the bst rules wont change
+node *FindMin(node *t)  // if we want to replace a node from its right subtree we should find the minimum element of the right subtree so in changing those values the bst rules wont change
 {
 while(t->left)
 t=t->left;
@@ -81,5 +81,6 @@ for(i=0;i<n;i++)
 {
 int val;
 scanf("%d",&val);
-root=insert(val);
+root=insert(root,val);
+}
 }
